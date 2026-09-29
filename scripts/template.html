@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bear Creek Peer Snapshot</title>
+<style>
+:root{--bg:#f6f7f5;--card:#fff;--ink:#1c2321;--mute:#647069;--line:#e2e6e2;--bc:#1f6f5c;--bc-soft:#e3f1ec;--peer:#9aa5a0;
+--c1:#2f6db3;--c2:#d98a1f;--c3:#4f9a5b;--c4:#a8b0ab;--warn:#b5432f}
+@media (max-width:560px){.g2{grid-template-columns:1fr}}
+@media (prefers-color-scheme:dark){:root{--bg:#141917;--card:#1d2421;--ink:#e8ece9;--mute:#98a39d;--line:#2d3833;--bc:#4fc3a1;--bc-soft:#1f3a32;--peer:#6c7a73;
+--c1:#6ea6ea;--c2:#eba94a;--c3:#7cc687;--c4:#6f7a74;--warn:#e88a76}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:24px 16px 56px}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:19px;margin:36px 0 4px}h3{font-size:14px;margin:0 0 2px}
+.sub{color:var(--mute);margin:0 0 16px;font-size:14px}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(auto-fit,minmax(480px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.kpi .v{font-size:26px;font-weight:650;line-height:1.2}.kpi .l{color:var(--mute);font-size:13px}.kpi .d{font-size:13px;color:var(--mute)}
+svg{width:100%;height:auto;display:block;overflow:visible}svg text{fill:var(--mute);font-size:11px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--mute);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}th{color:var(--mute);font-weight:600;font-size:12px}
+tr.me td{background:var(--bc-soft);font-weight:600}.scroll{overflow-x:auto}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.tabs button,.btn{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.tabs button[aria-pressed=true],.btn.on{background:var(--bc);border-color:var(--bc);color:#fff}
+.rk{display:inline-block;min-width:24px;padding:1px 6px;border-radius:6px;font-size:12px;text-align:center}
+.up{color:var(--c3)}.down{color:var(--warn)}
+.sl{display:grid;grid-template-columns:110px 1fr 84px;align-items:center;gap:10px;margin:10px 0}.sl output{text-align:right;font-weight:600}
+input[type=range]{width:100%;accent-color:var(--bc)}
+.note{font-size:12.5px;color:var(--mute);margin-top:10px}
+.score td:nth-child(n+2){text-align:right}
+</style>
+</head>
+<body><main>
+<h1>The Bear Creek School — Peer Snapshot</h1>
+<p class="sub">Form 990 data (IRS e-file), FY2018–FY2025 · Peers: Lakeside, Eastside Prep, Overlake, Annie Wright, Seattle Country Day, Charles Wright, Bush. FY = year in which the fiscal year ends.</p>
+
+<div id="kpis" class="grid g4"></div>
+
+<h2>1 · Bear Creek trends</h2>
+<p class="sub">Dashed grey line = peer median (7 peers).</p>
+<div class="grid g2">
+  <div class="card"><h3>Revenue mix</h3><div class="sub">Share of total revenue</div><div id="c-mix"></div><div class="legend" id="l-mix"></div></div>
+  <div class="card"><h3>Operating margin</h3><div class="sub">(Revenue − investment income − expenses) ÷ (Revenue − investment income)</div><div id="c-margin"></div></div>
+  <div class="card"><h3>Salaries &amp; benefits</h3><div class="sub">Share of total expenses</div><div id="c-comp"></div></div>
+  <div class="card"><h3>Endowment value</h3><div class="sub">Year-end balance, Schedule D Part V ($M)</div><div id="c-endow"></div></div>
+</div>
+
+<h2>2 · Peer comparison</h2>
+<p class="sub">Rank 1 = highest value among the 8 schools. Cells show each year's rank; Δ = change in rank over the last 3 years (▲ moved up).</p>
+<div class="card scroll"><table class="score" id="score"></table></div>
+<div class="grid g2" style="margin-top:16px">
+  <div class="card"><div class="tabs" id="mtabs"></div><div class="scroll"><table id="rank-table"></table></div></div>
+  <div class="card"><h3 id="bump-title"></h3><div class="sub">Rank by year — Bear Creek highlighted</div><div id="bump"></div></div>
+</div>
+
+<h2>3 · Endowment</h2>
+<p class="sub">Implied draw = Schedule D endowment spending (grants + other + admin) ÷ beginning balance. Many schools spend from the endowment through board-designated transfers that don’t show on Schedule D, so treat low draw rates with care.</p>
+<div id="e-kpis" class="grid g4"></div>
+<div class="grid g2" style="margin-top:16px">
+  <div class="card scroll"><h3>Peer endowments (latest year)</h3><table id="e-table"></table></div>
+  <div class="card"><h3>10-year balance projection</h3><div class="sub">Starting from the latest year-end balance</div>
+    <div class="tabs" id="presets"></div>
+    <div class="sl"><label for="s-draw">Draw rate</label><input id="s-draw" type="range" min="0" max="8" step="0.1"><output id="o-draw"></output></div>
+    <div class="sl"><label for="s-ret">Investment return</label><input id="s-ret" type="range" min="0" max="12" step="0.1"><output id="o-ret"></output></div>
+    <div class="sl"><label for="s-gift">Gifts / year</label><input id="s-gift" type="range" min="0" max="3000000" step="50000"><output id="o-gift"></output></div>
+    <div id="proj"></div><div class="legend" id="l-proj"></div><div id="proj-out" class="note"></div>
+  </div>
+</div>
+<p class="note">Method: balance<sub>t+1</sub> = balance<sub>t</sub> × (1 + return − draw) + gifts. Draw is applied to the beginning balance. Sliders start at Bear Creek’s recent averages (return and gifts: last 5 years; draw: last 3 years). Multiples use total operating expenses. Overlake’s FY2025 revenue and endowment include a one-time ~$23M gift. Eastside Prep began reporting an endowment in FY2021.</p>
+</main>
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+const RAW = JSON.parse(document.getElementById("data").textContent);
+const ME = "911420530", Y0 = 2018;
+const ids = Object.keys(RAW), YEARS = [...new Set(ids.flatMap(i => Object.keys(RAW[i].years).map(Number)))].filter(y => y >= Y0).sort();
+const LAST = YEARS[YEARS.length - 1];
+const short = {"911420530":"Bear Creek","910564971":"Lakeside","371430960":"Eastside Prep","910814431":"Overlake","910567266":"Annie Wright","910777610":"Seattle CDS","910673111":"Charles Wright","910161095":"Bush"};
+const $ = id => document.getElementById(id);
+const sum = a => a.reduce((x, y) => x + y, 0), avg = a => a.length ? sum(a) / a.length : null;
+const median = a => { const s = a.filter(v => v != null).sort((x, y) => x - y); if (!s.length) return null; const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+const $m = v => v == null ? "–" : Math.abs(v) >= 1e9 ? "$" + (v/1e9).toFixed(2) + "B" : Math.abs(v) >= 1e6 ? "$" + (v/1e6).toFixed(1) + "M" : "$" + Math.round(v/1e3) + "K";
+const pct = (v, d = 1) => v == null ? "–" : (v * 100).toFixed(d) + "%";
+const xx = v => v == null ? "–" : v.toFixed(2) + "×";
+
+// derived metrics per school-year
+const M = {};
+for (const id of ids) { M[id] = {};
+  for (const y of YEARS) { const r = RAW[id].years[y]; if (!r) continue;
+    const core = r.revenue - r.invest, e = r.endow;
+    const out = e ? e.grants + e.other + e.admin : null;
+    M[id][y] = { ...r,
+      opm: (core - r.expenses) / core, comp: r.comp / r.expenses,
+      mixP: r.program / r.revenue, mixC: r.contrib / r.revenue, mixI: r.invest / r.revenue, mixO: (r.revenue - r.program - r.contrib - r.invest) / r.revenue,
+      endow: e ? e.end : null, mult: e && e.end ? e.end / r.expenses : null,
+      draw: e && e.begin ? out / e.begin : null, ret: e && e.begin ? e.earnings / e.begin : null };
+  }}
+const METRICS = [
+  {k:"opm", n:"Operating margin", f:v => pct(v)},
+  {k:"comp", n:"Salaries & benefits % expenses", f:v => pct(v)},
+  {k:"mixP", n:"Tuition & program % revenue", f:v => pct(v, 0)},
+  {k:"mixC", n:"Contributions % revenue", f:v => pct(v)},
+  {k:"endow", n:"Endowment value", f:$m},
+  {k:"mult", n:"Endowment ÷ expenses", f:xx},
+  {k:"draw", n:"Implied draw rate", f:v => pct(v, 2)}];
+const val = (id, y, k) => M[id][y] ? M[id][y][k] : null;
+function ranks(k, y) { const v = ids.map(i => [i, val(i, y, k)]).filter(a => a[1] != null).sort((a, b) => b[1] - a[1]);
+  const o = {}; v.forEach((a, i) => o[a[0]] = i + 1); return o; }
+const peerMed = (k, y) => median(ids.filter(i => i !== ME).map(i => val(i, y, k)));
+
+// ---------- SVG charts ----------
+const W = 560, H = 230, P = {l: 50, r: 12, t: 10, b: 24};
+function frame(domain, fmt, ticks = 4) { const [lo, hi] = domain, x = i => P.l + (W - P.l - P.r) * (YEARS.length === 1 ? .5 : i / (YEARS.length - 1)), y = v => P.t + (H - P.t - P.b) * (1 - (v - lo) / (hi - lo));
+  let s = ""; for (let t = 0; t <= ticks; t++) { const v = lo + (hi - lo) * t / ticks; s += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${P.l - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`; }
+  YEARS.forEach((yr, i) => s += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${String(yr).slice(2) === "" ? yr : "FY" + String(yr).slice(2)}</text>`);
+  return {x, y, s}; }
+function nice(vals, pad = .1) { let lo = Math.min(...vals), hi = Math.max(...vals); if (lo === hi) { lo -= 1; hi += 1; } const p = (hi - lo) * pad; return [lo - p, hi + p]; }
+function lineChart(el, series, fmt, dom) {
+  const all = series.flatMap(s => s.v.filter(v => v != null)); const f = frame(dom || nice(all), fmt);
+  let s = f.s; for (const se of series) { let d = "", pen = false;
+    se.v.forEach((v, i) => { if (v == null) { pen = false; return; } d += (pen ? "L" : "M") + f.x(i).toFixed(1) + " " + f.y(v).toFixed(1); pen = true; });
+    s += `<path d="${d}" fill="none" stroke="${se.c}" stroke-width="${se.w || 2.5}" ${se.dash ? 'stroke-dasharray="5 4"' : ""} stroke-linejoin="round"/>`;
+    if (!se.dash) se.v.forEach((v, i) => { if (v != null) s += `<circle cx="${f.x(i)}" cy="${f.y(v)}" r="3.5" fill="${se.c}"><title>${se.n} FY${YEARS[i]}: ${fmt(v)}</title></circle>`; }); }
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img">${s}</svg>`; }
+function barChart(el, vals, fmt, color = "var(--bc)") { const f = frame([0, Math.max(...vals.filter(v => v != null)) * 1.1], fmt), bw = (W - P.l - P.r) / YEARS.length * .6; let s = f.s;
+  vals.forEach((v, i) => { if (v != null) s += `<rect x="${f.x(i) - bw / 2}" y="${f.y(v)}" width="${bw}" height="${f.y(0) - f.y(v)}" rx="3" fill="${color}"><title>FY${YEARS[i]}: ${fmt(v)}</title></rect>`; });
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img">${s}</svg>`; }
+function stacked(el, layers) { const f = frame([0, 1], v => Math.round(v * 100) + "%"), bw = (W - P.l - P.r) / YEARS.length * .6; let s = f.s;
+  YEARS.forEach((yr, i) => { let acc = 0; for (const L of layers) { const v = Math.max(0, L.v[i] ?? 0); if (v) s += `<rect x="${f.x(i) - bw / 2}" y="${f.y(acc + v)}" width="${bw}" height="${f.y(acc) - f.y(acc + v)}" fill="${L.c}"><title>FY${yr} ${L.n}: ${pct(v)}</title></rect>`; acc += v; } });
+  el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img">${s}</svg>`; }
+const legend = (el, items) => el.innerHTML = items.map(i => `<span><i style="background:${i.c};${i.dash ? "height:2px;vertical-align:3px" : ""}"></i>${i.n}</span>`).join("");
+
+// ---------- KPIs ----------
+const me = y => M[ME][y], cur = me(LAST), prev = me(LAST - 3);
+function kpi(l, v, d) { return `<div class="card kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="d">${d}</div></div>`; }
+const rk = (k, y = LAST) => ranks(k, y)[ME], nn = k => Object.keys(ranks(k, LAST)).length;
+$("kpis").innerHTML =
+  kpi(`Revenue FY${LAST}`, $m(cur.revenue), `${pct(cur.revenue / prev.revenue ** 1 - 1, 0)} vs FY${LAST - 3}`) +
+  kpi("Operating margin", pct(cur.opm), `Rank ${rk("opm")} of ${nn("opm")} · peer median ${pct(peerMed("opm", LAST))}`) +
+  kpi("Salaries & benefits", pct(cur.comp), `Rank ${rk("comp")} of ${nn("comp")} · peer median ${pct(peerMed("comp", LAST))}`) +
+  kpi("Endowment", $m(cur.endow), `${xx(cur.mult)} expenses · peer median ${xx(peerMed("mult", LAST))}`);
+
+// ---------- Section 1 ----------
+const col = k => YEARS.map(y => val(ME, y, k));
+const mix = [{n:"Tuition & program", c:"var(--c1)", v:col("mixP")}, {n:"Contributions", c:"var(--c2)", v:col("mixC")}, {n:"Investment income", c:"var(--c3)", v:col("mixI")}, {n:"Other", c:"var(--c4)", v:col("mixO")}];
+stacked($("c-mix"), mix); legend($("l-mix"), mix);
+const withPeer = (k, fmt, el) => lineChart(el, [{n:"Peer median", c:"var(--peer)", dash:1, w:2, v:YEARS.map(y => peerMed(k, y))}, {n:"Bear Creek", c:"var(--bc)", v:col(k)}], fmt);
+withPeer("opm", v => pct(v, 0), $("c-margin")); withPeer("comp", v => pct(v, 0), $("c-comp"));
+barChart($("c-endow"), col("endow").map(v => v == null ? null : v / 1e6), v => "$" + v.toFixed(1) + "M");
+
+// ---------- Section 2 ----------
+const heat = r => r <= 2 ? "background:var(--bc);color:#fff" : r >= 7 ? "background:var(--bc-soft);color:var(--ink)" : "";
+$("score").innerHTML = `<tr><th>Metric</th><th>Bear Creek FY${LAST}</th><th>Peer median</th><th>Rank FY${LAST}</th><th>Rank FY${LAST - 3}</th><th>Δ 3 yrs</th></tr>` +
+  METRICS.map(m => { const a = rk(m.k), b = rk(m.k, LAST - 3), d = a != null && b != null ? b - a : null;
+    return `<tr><td>${m.n}</td><td>${m.f(cur[m.k])}</td><td>${m.f(peerMed(m.k, LAST))}</td><td><span class="rk" style="${a ? heat(a) : ""}">${a ?? "–"}</span> of ${nn(m.k)}</td><td>${b ?? "–"}</td><td class="${d > 0 ? "up" : d < 0 ? "down" : ""}">${d == null ? "–" : d > 0 ? "▲ " + d : d < 0 ? "▼ " + -d : "="}</td></tr>`; }).join("");
+let metric = METRICS[0];
+function renderRank() {
+  $("mtabs").innerHTML = METRICS.map(m => `<button aria-pressed="${m === metric}" data-k="${m.k}">${m.n}</button>`).join("");
+  $("mtabs").querySelectorAll("button").forEach(b => b.onclick = () => { metric = METRICS.find(m => m.k === b.dataset.k); renderRank(); });
+  const rs = Object.fromEntries(YEARS.map(y => [y, ranks(metric.k, y)]));
+  const order = ids.filter(i => rs[LAST][i]).sort((a, b) => rs[LAST][a] - rs[LAST][b]);
+  $("rank-table").innerHTML = `<tr><th>School</th><th>Value</th>${YEARS.map(y => `<th>${String(y).slice(2)}</th>`).join("")}</tr>` +
+    order.map(i => `<tr class="${i === ME ? "me" : ""}"><td>${short[i]}</td><td>${metric.f(val(i, LAST, metric.k))}</td>${YEARS.map(y => `<td>${rs[y][i] ?? "–"}</td>`).join("")}</tr>`).join("");
+  $("bump-title").textContent = metric.n;
+  const n = ids.length, f = frame([n + .5, .5], v => Number.isInteger(v) ? v : "", n); let s = "";
+  s = f.s.replace(/<text[^>]*text-anchor="end">[^<]*<\/text>/g, ""); for (let r = 1; r <= n; r++) s += `<text x="${P.l - 6}" y="${f.y(r) + 4}" text-anchor="end">${r}</text>`;
+  for (const i of order.filter(i => i !== ME).concat(ME)) { const isMe = i === ME; let d = "", pen = false;
+    YEARS.forEach((y, k) => { const r = rs[y][i]; if (!r) { pen = false; return; } d += (pen ? "L" : "M") + f.x(k) + " " + f.y(r); pen = true; });
+    s += `<path d="${d}" fill="none" stroke="${isMe ? "var(--bc)" : "var(--peer)"}" stroke-width="${isMe ? 3.5 : 1.5}" opacity="${isMe ? 1 : .55}"/>`;
+    const lr = rs[LAST][i]; s += `<text x="${f.x(YEARS.length - 1) + 6}" y="${f.y(lr) + 4}" style="font-weight:${isMe ? 700 : 400};fill:${isMe ? "var(--bc)" : "var(--mute)"}" text-anchor="start">${short[i]}</text>`;
+    if (isMe) YEARS.forEach((y, k) => { if (rs[y][i]) s += `<circle cx="${f.x(k)}" cy="${f.y(rs[y][i])}" r="4" fill="var(--bc)"><title>FY${y}: rank ${rs[y][i]}</title></circle>`; }); }
+  $("bump").innerHTML = `<svg viewBox="0 0 ${W + 70} ${H + 20}" role="img" style="margin-right:-60px">${s}</svg>`; }
+renderRank();
+
+// ---------- Section 3 ----------
+const last3 = YEARS.slice(-3), last5 = YEARS.slice(-5);
+const bcAvg = (k, ys) => avg(ys.map(y => val(ME, y, k)).filter(v => v != null));
+const drawAvg = id => { const o = last3.map(y => M[id][y] && M[id][y].endow ? RAW[id].years[y].endow : null).filter(Boolean); const b = sum(o.map(e => e.begin)); return b ? sum(o.map(e => e.grants + e.other + e.admin)) / b : null; };
+const retAvg = (id, ys) => { const e = ys.map(y => RAW[id].years[y] && RAW[id].years[y].endow).filter(x => x && x.begin); return e.length ? sum(e.map(x => x.earnings)) / sum(e.map(x => x.begin)) : null; }; // dollar-weighted
+$("e-kpis").innerHTML =
+  kpi("Endowment ÷ expenses", xx(cur.mult), `Rank ${rk("mult")} of ${nn("mult")} · peer median ${xx(peerMed("mult", LAST))}`) +
+  kpi("Implied draw rate", pct(drawAvg(ME), 2), `3-yr avg · peer median ${pct(median(ids.filter(i => i !== ME).map(drawAvg)), 1)}`) +
+  kpi("5-yr return", pct(retAvg(ME, last5)), `Peer median ${pct(median(ids.filter(i => i !== ME).map(i => retAvg(i, last5))))}`) +
+  kpi("Endowment ÷ net assets", pct(cur.endow / cur.netassets, 0), `Endowment ${$m(cur.endow)} of ${$m(cur.netassets)}`);
+$("e-table").innerHTML = `<tr><th>School</th><th>Endowment</th><th>÷ Expenses</th><th>Draw (3-yr)</th><th>Return (5-yr)</th></tr>` +
+  ids.filter(i => val(i, LAST, "endow")).sort((a, b) => val(b, LAST, "mult") - val(a, LAST, "mult")).map(i =>
+    `<tr class="${i === ME ? "me" : ""}"><td>${short[i]}</td><td>${$m(val(i, LAST, "endow"))}</td><td>${xx(val(i, LAST, "mult"))}</td><td>${pct(drawAvg(i), 1)}</td><td>${pct(retAvg(i, last5), 1)}</td></tr>`).join("");
+
+const S = {draw: +(drawAvg(ME) * 100).toFixed(1), ret: +(retAvg(ME, last5) * 100).toFixed(1), gift: Math.round(avg(last5.map(y => RAW[ME].years[y].endow.gifts)) / 5e4) * 5e4};
+const D0 = {...S};
+const sl = {draw: $("s-draw"), ret: $("s-ret"), gift: $("s-gift")};
+function project() {
+  let b = cur.endow, path = [b], drawn = 0; for (let t = 1; t <= 10; t++) { const d = b * S.draw / 100; drawn += d; b = b * (1 + S.ret / 100) - d + S.gift; path.push(b); }
+  const base = [cur.endow]; let bb = cur.endow; for (let t = 1; t <= 10; t++) { bb = bb * (1 + D0.ret / 100 - D0.draw / 100) + D0.gift; base.push(bb); }
+  const H2 = 240, dom = [0, Math.max(...path, ...base) * 1.1], x = i => 56 + (W - 68) * i / 10, y = v => 10 + (H2 - 34) * (1 - (v - dom[0]) / (dom[1] - dom[0]));
+  let s = ""; for (let t = 0; t <= 4; t++) { const v = dom[1] * t / 4; s += `<line x1="56" x2="${W - 12}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="50" y="${y(v) + 4}" text-anchor="end">${$m(v)}</text>`; }
+  for (let i = 0; i <= 10; i += 2) s += `<text x="${x(i)}" y="${H2 - 6}" text-anchor="middle">Yr ${i}</text>`;
+  const line = (p, c, dash) => `<path d="${p.map((v, i) => (i ? "L" : "M") + x(i) + " " + y(v)).join("")}" fill="none" stroke="${c}" stroke-width="${dash ? 2 : 3}" ${dash ? 'stroke-dasharray="5 4"' : ""}/>`;
+  s += line(base, "var(--peer)", 1) + line(path, "var(--bc)") + path.map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="3" fill="var(--bc)"><title>Yr ${i}: ${$m(v)}</title></circle>`).join("");
+  $("proj").innerHTML = `<svg viewBox="0 0 ${W} ${H2}" role="img">${s}</svg>`;
+  legend($("l-proj"), [{n:"Your scenario", c:"var(--bc)"}, {n:"Baseline (recent averages)", c:"var(--peer)", dash:1}]);
+  const opx = cur.expenses * 1.03 ** 10;
+  $("proj-out").innerHTML = `<b>Year 10: ${$m(path[10])}</b> (${(path[10] / cur.endow).toFixed(1)}× today) · about ${xx(path[10] / opx)} operating expenses if expenses grow 3%/yr · cumulative draw ${$m(drawn)}.`;
+  $("o-draw").textContent = S.draw.toFixed(1) + "%"; $("o-ret").textContent = S.ret.toFixed(1) + "%"; $("o-gift").textContent = $m(S.gift); }
+for (const k in sl) { sl[k].value = S[k]; sl[k].oninput = () => { S[k] = +sl[k].value; project(); }; }
+const presets = [["Recent average", D0.draw], ["4% policy", 4], ["5% policy", 5]];
+$("presets").innerHTML = presets.map((p, i) => `<button data-i="${i}" aria-pressed="false">${p[0]} · ${p[1].toFixed(1)}% draw</button>`).join("");
+$("presets").querySelectorAll("button").forEach(b => b.onclick = () => { S.draw = presets[b.dataset.i][1]; sl.draw.value = S.draw; project(); });
+project();
+</script>
+</body>
+</html>

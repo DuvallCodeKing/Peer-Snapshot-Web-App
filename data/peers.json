@@ -1,0 +1,1321 @@
+{
+ "911420530": {
+  "name": "The Bear Creek School",
+  "years": {
+   "2017": {
+    "contrib": 1153702,
+    "program": 16812914,
+    "invest": 179026,
+    "other": 101079,
+    "revenue": 18246721,
+    "comp": 9471672,
+    "expenses": 17892410,
+    "netassets": 18637478,
+    "endow": {
+     "begin": 1087127,
+     "gifts": 45834,
+     "earnings": 144549,
+     "grants": 32359,
+     "other": 0,
+     "admin": 0,
+     "end": 1245151
+    }
+   },
+   "2018": {
+    "contrib": 834002,
+    "program": 17968391,
+    "invest": 143772,
+    "other": 125993,
+    "revenue": 19072158,
+    "comp": 9830898,
+    "expenses": 18795874,
+    "netassets": 19759771,
+    "endow": {
+     "begin": 1245151,
+     "gifts": 21491,
+     "earnings": 108272,
+     "grants": 390,
+     "other": 0,
+     "admin": 0,
+     "end": 1374524
+    }
+   },
+   "2019": {
+    "contrib": 661346,
+    "program": 19411257,
+    "invest": 127156,
+    "other": 116069,
+    "revenue": 20315828,
+    "comp": 10431941,
+    "expenses": 19694450,
+    "netassets": 19385745,
+    "endow": {
+     "begin": 1374524,
+     "gifts": 0,
+     "earnings": 806695,
+     "grants": 3500,
+     "other": 0,
+     "admin": 0,
+     "end": 1451719
+    }
+   },
+   "2020": {
+    "contrib": 1427914,
+    "program": 20625263,
+    "invest": 162179,
+    "other": 47614,
+    "revenue": 22262970,
+    "comp": 11630796,
+    "expenses": 21111129,
+    "netassets": 19087447,
+    "endow": {
+     "begin": 1451719,
+     "gifts": 10000,
+     "earnings": 60064,
+     "grants": 700,
+     "other": 0,
+     "admin": 0,
+     "end": 1521083
+    }
+   },
+   "2021": {
+    "contrib": 2810848,
+    "program": 21852003,
+    "invest": 77662,
+    "other": -19369,
+    "revenue": 24721144,
+    "comp": 13116083,
+    "expenses": 22189598,
+    "netassets": 23385478,
+    "endow": {
+     "begin": 1521083,
+     "gifts": 10000,
+     "earnings": 485105,
+     "grants": 550,
+     "other": 0,
+     "admin": 0,
+     "end": 2015638
+    }
+   },
+   "2022": {
+    "contrib": 3497795,
+    "program": 23939341,
+    "invest": 104871,
+    "other": 47822,
+    "revenue": 27589829,
+    "comp": 13947560,
+    "expenses": 23212244,
+    "netassets": 29047252,
+    "endow": {
+     "begin": 2015638,
+     "gifts": 2123000,
+     "earnings": -350654,
+     "grants": 950,
+     "other": 0,
+     "admin": 0,
+     "end": 3787034
+    }
+   },
+   "2023": {
+    "contrib": 2077400,
+    "program": 25686470,
+    "invest": 156464,
+    "other": 130837,
+    "revenue": 28051171,
+    "comp": 15244919,
+    "expenses": 25399616,
+    "netassets": 33029786,
+    "endow": {
+     "begin": 3787035,
+     "gifts": 110100,
+     "earnings": 312578,
+     "grants": 350,
+     "other": 0,
+     "admin": 0,
+     "end": 4209363
+    }
+   },
+   "2024": {
+    "contrib": 1972163,
+    "program": 26575740,
+    "invest": 827750,
+    "other": 103731,
+    "revenue": 29479384,
+    "comp": 16053745,
+    "expenses": 27153323,
+    "netassets": 36339849,
+    "endow": {
+     "begin": 4209363,
+     "gifts": 15000,
+     "earnings": 439222,
+     "grants": 7060,
+     "other": 0,
+     "admin": 0,
+     "end": 4656525
+    }
+   },
+   "2025": {
+    "contrib": 6026620,
+    "program": 28855972,
+    "invest": 787501,
+    "other": 6403,
+    "revenue": 35676496,
+    "comp": 18046886,
+    "expenses": 29762460,
+    "netassets": 42859498,
+    "endow": {
+     "begin": 4656525,
+     "gifts": 1100577,
+     "earnings": 472423,
+     "grants": 1000,
+     "other": 0,
+     "admin": 0,
+     "end": 6228525
+    }
+   }
+  }
+ },
+ "910564971": {
+  "name": "Lakeside School",
+  "years": {
+   "2018": {
+    "contrib": 5262962,
+    "program": 30909258,
+    "invest": 10886576,
+    "other": 304212,
+    "revenue": 47363008,
+    "comp": 23462089,
+    "expenses": 41409542,
+    "netassets": 311477044,
+    "endow": {
+     "begin": 213709387,
+     "gifts": 797396,
+     "earnings": 16168833,
+     "grants": 0,
+     "other": 8107426,
+     "admin": 0,
+     "end": 222568190
+    }
+   },
+   "2019": {
+    "contrib": 13159866,
+    "program": 33010947,
+    "invest": 18940327,
+    "other": 341931,
+    "revenue": 65453071,
+    "comp": 25505580,
+    "expenses": 45293186,
+    "netassets": 321961576,
+    "endow": {
+     "begin": 222568190,
+     "gifts": 1579397,
+     "earnings": 7551286,
+     "grants": 0,
+     "other": 8410598,
+     "admin": 0,
+     "end": 223288275
+    }
+   },
+   "2020": {
+    "contrib": 6050674,
+    "program": 34380068,
+    "invest": 14507324,
+    "other": 416775,
+    "revenue": 55354841,
+    "comp": 26370182,
+    "expenses": 46043586,
+    "netassets": 316955613,
+    "endow": {
+     "begin": 223288275,
+     "gifts": 1052066,
+     "earnings": -1442065,
+     "grants": 0,
+     "other": 8435878,
+     "admin": 0,
+     "end": 214462398
+    }
+   },
+   "2021": {
+    "contrib": 8246570,
+    "program": 36322514,
+    "invest": 10753038,
+    "other": 416965,
+    "revenue": 55739087,
+    "comp": 27969352,
+    "expenses": 48809319,
+    "netassets": 392314752,
+    "endow": {
+     "begin": 214462398,
+     "gifts": 1759684,
+     "earnings": 71980513,
+     "grants": 0,
+     "other": 7507707,
+     "admin": 0,
+     "end": 280694888
+    }
+   },
+   "2022": {
+    "contrib": 6162931,
+    "program": 39063743,
+    "invest": 19421833,
+    "other": 405621,
+    "revenue": 65054128,
+    "comp": 29626548,
+    "expenses": 52217970,
+    "netassets": 358369723,
+    "endow": {
+     "begin": 280694888,
+     "gifts": 2332710,
+     "earnings": -25581816,
+     "grants": 0,
+     "other": 8482110,
+     "admin": 0,
+     "end": 248963672
+    }
+   },
+   "2023": {
+    "contrib": 34262241,
+    "program": 40779179,
+    "invest": 3263037,
+    "other": 590285,
+    "revenue": 78894742,
+    "comp": 31510758,
+    "expenses": 54924516,
+    "netassets": 406858606,
+    "endow": {
+     "begin": 248963672,
+     "gifts": 1279914,
+     "earnings": 23158414,
+     "grants": 0,
+     "other": 9288403,
+     "admin": 0,
+     "end": 264113597
+    }
+   },
+   "2024": {
+    "contrib": 19587206,
+    "program": 42670628,
+    "invest": 14310511,
+    "other": 475128,
+    "revenue": 77043473,
+    "comp": 34287152,
+    "expenses": 58709894,
+    "netassets": 455077807,
+    "endow": {
+     "begin": 264113597,
+     "gifts": 879262,
+     "earnings": 34061185,
+     "grants": 0,
+     "other": 10141183,
+     "admin": 0,
+     "end": 288912861
+    }
+   },
+   "2025": {
+    "contrib": 65276017,
+    "program": 45337873,
+    "invest": 14235345,
+    "other": 490017,
+    "revenue": 125339252,
+    "comp": 35714465,
+    "expenses": 62665662,
+    "netassets": 542383886,
+    "endow": {
+     "begin": 288912861,
+     "gifts": 871050,
+     "earnings": 32574545,
+     "grants": 0,
+     "other": 10690733,
+     "admin": 0,
+     "end": 311667723
+    }
+   }
+  }
+ },
+ "371430960": {
+  "name": "Eastside Preparatory School",
+  "years": {
+   "2017": {
+    "contrib": 26977230,
+    "program": 13535262,
+    "invest": -255454,
+    "other": 395423,
+    "revenue": 40652461,
+    "comp": 8180638,
+    "expenses": 14031805,
+    "netassets": 44440709,
+    "endow": null
+   },
+   "2018": {
+    "contrib": 1817862,
+    "program": 15171932,
+    "invest": 88873,
+    "other": 348989,
+    "revenue": 17427656,
+    "comp": 9307114,
+    "expenses": 15926352,
+    "netassets": 45650451,
+    "endow": null
+   },
+   "2019": {
+    "contrib": 2606295,
+    "program": 16565013,
+    "invest": 242875,
+    "other": 480093,
+    "revenue": 19894276,
+    "comp": 10221040,
+    "expenses": 17979344,
+    "netassets": 47214785,
+    "endow": null
+   },
+   "2020": {
+    "contrib": 1757781,
+    "program": 17658948,
+    "invest": 239467,
+    "other": 348447,
+    "revenue": 20004643,
+    "comp": 11641561,
+    "expenses": 18464131,
+    "netassets": 48374689,
+    "endow": null
+   },
+   "2021": {
+    "contrib": 2039781,
+    "program": 19740654,
+    "invest": 84343,
+    "other": 82101,
+    "revenue": 21946879,
+    "comp": 12418051,
+    "expenses": 18588610,
+    "netassets": 51333127,
+    "endow": {
+     "begin": 0,
+     "gifts": 150000,
+     "earnings": -364,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 149636
+    }
+   },
+   "2022": {
+    "contrib": 2079412,
+    "program": 21676848,
+    "invest": 256112,
+    "other": 402954,
+    "revenue": 24415326,
+    "comp": 13295617,
+    "expenses": 21444315,
+    "netassets": 53396118,
+    "endow": {
+     "begin": 149636,
+     "gifts": 7500,
+     "earnings": 364,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 157500
+    }
+   },
+   "2023": {
+    "contrib": 9194234,
+    "program": 23558877,
+    "invest": 675123,
+    "other": 587835,
+    "revenue": 34016069,
+    "comp": 14920095,
+    "expenses": 24399411,
+    "netassets": 62169593,
+    "endow": {
+     "begin": 157500,
+     "gifts": 6930491,
+     "earnings": 30249,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 7118240
+    }
+   },
+   "2024": {
+    "contrib": 11893354,
+    "program": 24788218,
+    "invest": 1312351,
+    "other": 669846,
+    "revenue": 38663769,
+    "comp": 15375715,
+    "expenses": 25192961,
+    "netassets": 75359619,
+    "endow": {
+     "begin": 7118240,
+     "gifts": 256488,
+     "earnings": 323227,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 7697955
+    }
+   },
+   "2025": {
+    "contrib": 6728305,
+    "program": 26126946,
+    "invest": 1518039,
+    "other": 525165,
+    "revenue": 34898455,
+    "comp": 16110256,
+    "expenses": 27204401,
+    "netassets": 80291700,
+    "endow": {
+     "begin": 7697955,
+     "gifts": 145673,
+     "earnings": 350611,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 8194239
+    }
+   }
+  }
+ },
+ "910814431": {
+  "name": "Overlake School",
+  "years": {
+   "2017": {
+    "contrib": 1185521,
+    "program": 18641487,
+    "invest": 642018,
+    "other": 36909,
+    "revenue": 20505935,
+    "comp": 12057200,
+    "expenses": 20453306,
+    "netassets": 48481226,
+    "endow": {
+     "begin": 18060102,
+     "gifts": 152601,
+     "earnings": 2011599,
+     "grants": 0,
+     "other": 310194,
+     "admin": 0,
+     "end": 19914108
+    }
+   },
+   "2018": {
+    "contrib": 12028403,
+    "program": 19487530,
+    "invest": 807542,
+    "other": -2972,
+    "revenue": 32320503,
+    "comp": 12727553,
+    "expenses": 20809845,
+    "netassets": 60628003,
+    "endow": {
+     "begin": 19914108,
+     "gifts": 355145,
+     "earnings": 1006420,
+     "grants": 0,
+     "other": 340477,
+     "admin": 0,
+     "end": 20935196
+    }
+   },
+   "2019": {
+    "contrib": 5423874,
+    "program": 20171374,
+    "invest": 271169,
+    "other": 1818,
+    "revenue": 25868235,
+    "comp": 13466232,
+    "expenses": 22080038,
+    "netassets": 65299055,
+    "endow": {
+     "begin": 20935196,
+     "gifts": 276636,
+     "earnings": 1475591,
+     "grants": 0,
+     "other": 565070,
+     "admin": 0,
+     "end": 22122353
+    }
+   },
+   "2020": {
+    "contrib": 3465418,
+    "program": 20318476,
+    "invest": 4515256,
+    "other": 0,
+    "revenue": 28299150,
+    "comp": 13814149,
+    "expenses": 21313364,
+    "netassets": 68549081,
+    "endow": {
+     "begin": 22122353,
+     "gifts": 1322985,
+     "earnings": 523611,
+     "grants": 0,
+     "other": 556192,
+     "admin": 0,
+     "end": 23412757
+    }
+   },
+   "2021": {
+    "contrib": 2862030,
+    "program": 21198349,
+    "invest": 1414526,
+    "other": 55240,
+    "revenue": 25530145,
+    "comp": 14361150,
+    "expenses": 21606205,
+    "netassets": 77734237,
+    "endow": {
+     "begin": 23412757,
+     "gifts": 419541,
+     "earnings": 5847933,
+     "grants": 0,
+     "other": 787915,
+     "admin": 0,
+     "end": 28892316
+    }
+   },
+   "2022": {
+    "contrib": 2273192,
+    "program": 22957091,
+    "invest": 499766,
+    "other": 0,
+    "revenue": 25730049,
+    "comp": 15111804,
+    "expenses": 24117264,
+    "netassets": 74610474,
+    "endow": {
+     "begin": 28892316,
+     "gifts": 788163,
+     "earnings": -2812119,
+     "grants": 0,
+     "other": 635490,
+     "admin": 0,
+     "end": 26232870
+    }
+   },
+   "2023": {
+    "contrib": 6270407,
+    "program": 24322111,
+    "invest": 1025123,
+    "other": 0,
+    "revenue": 31617641,
+    "comp": 16509023,
+    "expenses": 27505240,
+    "netassets": 79881150,
+    "endow": {
+     "begin": 26232870,
+     "gifts": 799991,
+     "earnings": 1871598,
+     "grants": 0,
+     "other": 742426,
+     "admin": 0,
+     "end": 28162033
+    }
+   },
+   "2024": {
+    "contrib": 3078336,
+    "program": 25500947,
+    "invest": 1156569,
+    "other": 0,
+    "revenue": 29735852,
+    "comp": 17532797,
+    "expenses": 27957084,
+    "netassets": 84328643,
+    "endow": {
+     "begin": 28162033,
+     "gifts": 176403,
+     "earnings": 2973884,
+     "grants": 0,
+     "other": 758734,
+     "admin": 0,
+     "end": 30553586
+    }
+   },
+   "2025": {
+    "contrib": 23109211,
+    "program": 28052687,
+    "invest": 2286079,
+    "other": 0,
+    "revenue": 53447977,
+    "comp": 19046436,
+    "expenses": 31231331,
+    "netassets": 107620097,
+    "endow": {
+     "begin": 30553586,
+     "gifts": 10943339,
+     "earnings": 3614359,
+     "grants": 0,
+     "other": 832872,
+     "admin": 0,
+     "end": 44278412
+    }
+   }
+  }
+ },
+ "910567266": {
+  "name": "Annie Wright Schools",
+  "years": {
+   "2018": {
+    "contrib": 5949881,
+    "program": 16755626,
+    "invest": 1028941,
+    "other": 162616,
+    "revenue": 23897064,
+    "comp": 9831043,
+    "expenses": 19478327,
+    "netassets": 46994583,
+    "endow": {
+     "begin": 21293369,
+     "gifts": 53056,
+     "earnings": 1428309,
+     "grants": 744193,
+     "other": 0,
+     "admin": 0,
+     "end": 22030541
+    }
+   },
+   "2019": {
+    "contrib": 6395411,
+    "program": 18275807,
+    "invest": 973650,
+    "other": 232168,
+    "revenue": 25877036,
+    "comp": 10158381,
+    "expenses": 20376331,
+    "netassets": 53157905,
+    "endow": {
+     "begin": 22030541,
+     "gifts": 4490146,
+     "earnings": 1186321,
+     "grants": 779229,
+     "other": 0,
+     "admin": 40000,
+     "end": 26887779
+    }
+   },
+   "2020": {
+    "contrib": 2457534,
+    "program": 19396514,
+    "invest": 1538635,
+    "other": 405569,
+    "revenue": 23798252,
+    "comp": 11184999,
+    "expenses": 22225911,
+    "netassets": 54579152,
+    "endow": {
+     "begin": 26887779,
+     "gifts": 1246069,
+     "earnings": 1146470,
+     "grants": 799471,
+     "other": 0,
+     "admin": 0,
+     "end": 28480847
+    }
+   },
+   "2021": {
+    "contrib": 3874608,
+    "program": 18299587,
+    "invest": 1428619,
+    "other": 2373869,
+    "revenue": 25976683,
+    "comp": 11353376,
+    "expenses": 22024707,
+    "netassets": 63618725,
+    "endow": {
+     "begin": 28480847,
+     "gifts": 358232,
+     "earnings": 6206384,
+     "grants": 78250,
+     "other": 3260,
+     "admin": 0,
+     "end": 34963953
+    }
+   },
+   "2022": {
+    "contrib": 2836786,
+    "program": 24117406,
+    "invest": 1616636,
+    "other": 329371,
+    "revenue": 28900199,
+    "comp": 13262573,
+    "expenses": 26968253,
+    "netassets": 59609541,
+    "endow": {
+     "begin": 34963953,
+     "gifts": 2130847,
+     "earnings": -4240428,
+     "grants": 1650312,
+     "other": 68763,
+     "admin": 0,
+     "end": 31135297
+    }
+   },
+   "2023": {
+    "contrib": 3036615,
+    "program": 27144477,
+    "invest": 1544836,
+    "other": 303408,
+    "revenue": 32029336,
+    "comp": 14560356,
+    "expenses": 28040290,
+    "netassets": 65953201,
+    "endow": {
+     "begin": 31135297,
+     "gifts": 935057,
+     "earnings": 3506601,
+     "grants": 805108,
+     "other": 113720,
+     "admin": 0,
+     "end": 34658127
+    }
+   },
+   "2024": {
+    "contrib": 2539288,
+    "program": 30803542,
+    "invest": 1271698,
+    "other": 257630,
+    "revenue": 34872158,
+    "comp": 16463125,
+    "expenses": 32811779,
+    "netassets": 71915637,
+    "endow": {
+     "begin": 34658127,
+     "gifts": 73790,
+     "earnings": 4517065,
+     "grants": 117797,
+     "other": 993354,
+     "admin": 0,
+     "end": 38137831
+    }
+   },
+   "2025": {
+    "contrib": 2107973,
+    "program": 34118139,
+    "invest": 2163147,
+    "other": 349797,
+    "revenue": 38739056,
+    "comp": 19660853,
+    "expenses": 36853918,
+    "netassets": 76968349,
+    "endow": {
+     "begin": 38137831,
+     "gifts": 384082,
+     "earnings": 4697168,
+     "grants": 577703,
+     "other": 613119,
+     "admin": 0,
+     "end": 42028259
+    }
+   }
+  }
+ },
+ "910777610": {
+  "name": "Seattle Country Day School",
+  "years": {
+   "2018": {
+    "contrib": 1332952,
+    "program": 10475637,
+    "invest": 642303,
+    "other": -63563,
+    "revenue": 12387329,
+    "comp": 6117504,
+    "expenses": 9492881,
+    "netassets": 39909909,
+    "endow": {
+     "begin": 4144515,
+     "gifts": 810186,
+     "earnings": 287005,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 5241706
+    }
+   },
+   "2019": {
+    "contrib": 885179,
+    "program": 10559650,
+    "invest": 754373,
+    "other": -59383,
+    "revenue": 12139819,
+    "comp": 6311975,
+    "expenses": 10032475,
+    "netassets": 42799898,
+    "endow": {
+     "begin": 5241706,
+     "gifts": 305095,
+     "earnings": 299002,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 5845803
+    }
+   },
+   "2020": {
+    "contrib": 689813,
+    "program": 11187828,
+    "invest": 899283,
+    "other": 6807,
+    "revenue": 12783731,
+    "comp": 7758369,
+    "expenses": 11214172,
+    "netassets": 44566640,
+    "endow": {
+     "begin": 5844803,
+     "gifts": 283505,
+     "earnings": 211814,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 6340122
+    }
+   },
+   "2021": {
+    "contrib": 902019,
+    "program": 12450005,
+    "invest": 4101991,
+    "other": 56346,
+    "revenue": 17510361,
+    "comp": 8399166,
+    "expenses": 12508749,
+    "netassets": 54809475,
+    "endow": {
+     "begin": 6340122,
+     "gifts": 100206,
+     "earnings": 1861842,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 8302170
+    }
+   },
+   "2022": {
+    "contrib": 1097031,
+    "program": 14668753,
+    "invest": 1630983,
+    "other": 73582,
+    "revenue": 17470349,
+    "comp": 9105019,
+    "expenses": 14843821,
+    "netassets": 49809609,
+    "endow": {
+     "begin": 8302170,
+     "gifts": 29153,
+     "earnings": -1242086,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 7089237
+    }
+   },
+   "2023": {
+    "contrib": 1752719,
+    "program": 15274097,
+    "invest": 142633,
+    "other": 119185,
+    "revenue": 17288634,
+    "comp": 9744202,
+    "expenses": 15685822,
+    "netassets": 54760570,
+    "endow": {
+     "begin": 7089237,
+     "gifts": 24968,
+     "earnings": 735867,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 7850072
+    }
+   },
+   "2024": {
+    "contrib": 856344,
+    "program": 16877450,
+    "invest": 1292606,
+    "other": 120474,
+    "revenue": 19146874,
+    "comp": 10682797,
+    "expenses": 17029615,
+    "netassets": 60163908,
+    "endow": {
+     "begin": 7850072,
+     "gifts": 21495,
+     "earnings": 937124,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 8808691
+    }
+   },
+   "2025": {
+    "contrib": 843041,
+    "program": 17978556,
+    "invest": 1601595,
+    "other": 120834,
+    "revenue": 20544026,
+    "comp": 11375888,
+    "expenses": 17752344,
+    "netassets": 66560533,
+    "endow": {
+     "begin": 8808691,
+     "gifts": 10645,
+     "earnings": 1069369,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 9888705
+    }
+   }
+  }
+ },
+ "910673111": {
+  "name": "Charles Wright Academy",
+  "years": {
+   "2017": {
+    "contrib": 1033555,
+    "program": 17688415,
+    "invest": 1003828,
+    "other": -20589,
+    "revenue": 19705209,
+    "comp": 12074730,
+    "expenses": 18997414,
+    "netassets": 53393521,
+    "endow": {
+     "begin": 24641135,
+     "gifts": 373931,
+     "earnings": 3109934,
+     "grants": 380761,
+     "other": 579087,
+     "admin": 47149,
+     "end": 27118003
+    }
+   },
+   "2018": {
+    "contrib": 1688765,
+    "program": 18546805,
+    "invest": 1111952,
+    "other": -12265,
+    "revenue": 21335257,
+    "comp": 12143309,
+    "expenses": 19787439,
+    "netassets": 56062279,
+    "endow": {
+     "begin": 27118003,
+     "gifts": 687311,
+     "earnings": 2206874,
+     "grants": 389471,
+     "other": 583067,
+     "admin": 41395,
+     "end": 28998255
+    }
+   },
+   "2019": {
+    "contrib": 999400,
+    "program": 18467414,
+    "invest": 1101886,
+    "other": -78834,
+    "revenue": 20489866,
+    "comp": 12726421,
+    "expenses": 20618152,
+    "netassets": 56789198,
+    "endow": {
+     "begin": 28998255,
+     "gifts": 64741,
+     "earnings": 1809305,
+     "grants": 396514,
+     "other": 580223,
+     "admin": 41615,
+     "end": 29853949
+    }
+   },
+   "2020": {
+    "contrib": 1452539,
+    "program": 17559303,
+    "invest": 1226342,
+    "other": -23427,
+    "revenue": 20214757,
+    "comp": 12840179,
+    "expenses": 20336969,
+    "netassets": 56524165,
+    "endow": {
+     "begin": 29853949,
+     "gifts": 527733,
+     "earnings": 909801,
+     "grants": 402917,
+     "other": 423476,
+     "admin": 212652,
+     "end": 30252438
+    }
+   },
+   "2021": {
+    "contrib": 2884132,
+    "program": 16266782,
+    "invest": 1907045,
+    "other": 11742,
+    "revenue": 21069701,
+    "comp": 11093624,
+    "expenses": 18342601,
+    "netassets": 65529207,
+    "endow": {
+     "begin": 30252438,
+     "gifts": 11336,
+     "earnings": 8105855,
+     "grants": 470804,
+     "other": 774307,
+     "admin": 71252,
+     "end": 37053266
+    }
+   },
+   "2022": {
+    "contrib": 1465451,
+    "program": 16486928,
+    "invest": 1729429,
+    "other": 166271,
+    "revenue": 19848079,
+    "comp": 11068712,
+    "expenses": 19542109,
+    "netassets": 62421357,
+    "endow": {
+     "begin": 37053266,
+     "gifts": 234014,
+     "earnings": -1802658,
+     "grants": 0,
+     "other": 1010700,
+     "admin": 0,
+     "end": 34473922
+    }
+   },
+   "2023": {
+    "contrib": 2110517,
+    "program": 16561096,
+    "invest": 706095,
+    "other": -97820,
+    "revenue": 19279888,
+    "comp": 12027912,
+    "expenses": 21354336,
+    "netassets": 63219520,
+    "endow": {
+     "begin": 34473922,
+     "gifts": 9630,
+     "earnings": 3415215,
+     "grants": 0,
+     "other": 1354091,
+     "admin": 0,
+     "end": 36544676
+    }
+   },
+   "2024": {
+    "contrib": 1692084,
+    "program": 18332104,
+    "invest": 814789,
+    "other": -61488,
+    "revenue": 20777489,
+    "comp": 13270101,
+    "expenses": 25255977,
+    "netassets": 63324539,
+    "endow": {
+     "begin": 36544676,
+     "gifts": 11230,
+     "earnings": 5004954,
+     "grants": 0,
+     "other": 1605318,
+     "admin": 0,
+     "end": 39955542
+    }
+   },
+   "2025": {
+    "contrib": 1120334,
+    "program": 18645707,
+    "invest": 1655122,
+    "other": -43570,
+    "revenue": 21377593,
+    "comp": 13248729,
+    "expenses": 26013203,
+    "netassets": 62148672,
+    "endow": {
+     "begin": 39955542,
+     "gifts": 33902,
+     "earnings": 4821671,
+     "grants": 0,
+     "other": 3529300,
+     "admin": 0,
+     "end": 41281815
+    }
+   }
+  }
+ },
+ "910161095": {
+  "name": "The Bush School",
+  "years": {
+   "2017": {
+    "contrib": 2226127,
+    "program": 20437612,
+    "invest": 335645,
+    "other": -122036,
+    "revenue": 22877348,
+    "comp": 14226194,
+    "expenses": 21768640,
+    "netassets": 38287473,
+    "endow": {
+     "begin": 17270918,
+     "gifts": 80762,
+     "earnings": 1567540,
+     "grants": 0,
+     "other": 161149,
+     "admin": 0,
+     "end": 18758071
+    }
+   },
+   "2018": {
+    "contrib": 2269211,
+    "program": 21535367,
+    "invest": 511533,
+    "other": -103493,
+    "revenue": 24212618,
+    "comp": 14745415,
+    "expenses": 22785599,
+    "netassets": 40524089,
+    "endow": {
+     "begin": 18758071,
+     "gifts": 91745,
+     "earnings": 1042869,
+     "grants": 0,
+     "other": 72280,
+     "admin": 0,
+     "end": 19820405
+    }
+   },
+   "2019": {
+    "contrib": 6998132,
+    "program": 23043479,
+    "invest": 550657,
+    "other": -155200,
+    "revenue": 30437068,
+    "comp": 15355993,
+    "expenses": 24570253,
+    "netassets": 46951873,
+    "endow": {
+     "begin": 19820405,
+     "gifts": 90185,
+     "earnings": 828051,
+     "grants": 0,
+     "other": 14000,
+     "admin": 0,
+     "end": 20724641
+    }
+   },
+   "2020": {
+    "contrib": 6283542,
+    "program": 24387029,
+    "invest": 618750,
+    "other": -76040,
+    "revenue": 31213281,
+    "comp": 15339423,
+    "expenses": 24966139,
+    "netassets": 53505518,
+    "endow": {
+     "begin": 20724641,
+     "gifts": 132859,
+     "earnings": 700777,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 21558277
+    }
+   },
+   "2021": {
+    "contrib": 5500340,
+    "program": 25646162,
+    "invest": 1932733,
+    "other": -27426,
+    "revenue": 33051809,
+    "comp": 15390940,
+    "expenses": 25476072,
+    "netassets": 65028732,
+    "endow": {
+     "begin": 21558257,
+     "gifts": 313407,
+     "earnings": 4712153,
+     "grants": 0,
+     "other": 0,
+     "admin": 0,
+     "end": 26583817
+    }
+   },
+   "2022": {
+    "contrib": 4066891,
+    "program": 27771913,
+    "invest": 628081,
+    "other": -2834,
+    "revenue": 32464051,
+    "comp": 15945059,
+    "expenses": 28237738,
+    "netassets": 65165806,
+    "endow": {
+     "begin": 26583817,
+     "gifts": 151897,
+     "earnings": -2735962,
+     "grants": 0,
+     "other": 411000,
+     "admin": 0,
+     "end": 23588752
+    }
+   },
+   "2023": {
+    "contrib": 4227079,
+    "program": 29642744,
+    "invest": 1047597,
+    "other": 10003,
+    "revenue": 34927423,
+    "comp": 17915576,
+    "expenses": 32730181,
+    "netassets": 69232202,
+    "endow": {
+     "begin": 23588752,
+     "gifts": 468320,
+     "earnings": 2478399,
+     "grants": 0,
+     "other": 432000,
+     "admin": 0,
+     "end": 26103471
+    }
+   },
+   "2024": {
+    "contrib": 4931431,
+    "program": 31238168,
+    "invest": 1782657,
+    "other": 269572,
+    "revenue": 38221828,
+    "comp": 19770118,
+    "expenses": 35791144,
+    "netassets": 73704015,
+    "endow": {
+     "begin": 26103471,
+     "gifts": 478823,
+     "earnings": 3327775,
+     "grants": 0,
+     "other": 907998,
+     "admin": 0,
+     "end": 29002071
+    }
+   },
+   "2025": {
+    "contrib": 6009409,
+    "program": 33492645,
+    "invest": 1532568,
+    "other": 222756,
+    "revenue": 41257378,
+    "comp": 20197007,
+    "expenses": 38446645,
+    "netassets": 79218384,
+    "endow": {
+     "begin": 29002071,
+     "gifts": 809304,
+     "earnings": 3670416,
+     "grants": 0,
+     "other": 0,
+     "admin": 1800000,
+     "end": 31681791
+    }
+   }
+  }
+ }
+}
