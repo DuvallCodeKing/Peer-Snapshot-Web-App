@@ -15,7 +15,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-app
 main{max-width:1120px;margin:0 auto;padding:24px 16px 56px}
 h1{font-size:26px;margin:0 0 4px}h2{font-size:19px;margin:36px 0 4px}h3{font-size:14px;margin:0 0 2px}
 .sub{color:var(--mute);margin:0 0 16px;font-size:14px}
-.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(auto-fit,minmax(480px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:repeat(auto-fit,minmax(min(480px,100%),1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
 .kpi .v{font-size:26px;font-weight:650;line-height:1.2}.kpi .l{color:var(--mute);font-size:13px}.kpi .d{font-size:13px;color:var(--mute)}
 svg{width:100%;height:auto;display:block;overflow:visible}svg text{fill:var(--mute);font-size:11px}
