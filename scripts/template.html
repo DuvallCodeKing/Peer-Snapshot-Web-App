@@ -33,13 +33,21 @@ tr.me td{background:var(--bc-soft);font-weight:600}.scroll{overflow-x:auto}
 input[type=range]{width:100%;accent-color:var(--bc)}
 .note{font-size:12.5px;color:var(--mute);margin-top:10px}
 .score td:nth-child(n+2){text-align:right}
+.score tr.grp td{background:var(--bg);color:var(--mute);font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:left}
+.sum{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.sum li{display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:baseline}
+.chip{display:inline-block;text-align:center;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:6px;border:1px solid var(--line);color:var(--mute)}
+.chip.good{color:var(--c3);border-color:var(--c3)}.chip.watch{color:var(--warn);border-color:var(--warn)}
+.bud{display:grid;gap:4px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:13.5px}.bud b{font-weight:650}
 </style>
 </head>
 <body><main>
 <h1>The Bear Creek School — Peer Snapshot</h1>
 <p class="sub">Form 990 data (IRS e-file), FY2018–FY2025 · Peers: Lakeside, Eastside Prep, Overlake, Annie Wright, Seattle Country Day, Charles Wright, Bush. FY = year in which the fiscal year ends.</p>
 
-<div id="kpis" class="grid g4"></div>
+<h2 style="margin-top:8px">Summary</h2>
+<div class="card"><ul class="sum" id="summary"></ul></div>
+<div id="kpis" class="grid g4" style="margin-top:16px"></div>
 
 <h2>1 · Bear Creek trends</h2>
 <p class="sub">Dashed grey line = peer median (7 peers).</p>
@@ -50,7 +58,16 @@ input[type=range]{width:100%;accent-color:var(--bc)}
   <div class="card"><h3>Endowment value</h3><div class="sub">Year-end balance, Schedule D Part V ($M)</div><div id="c-endow"></div></div>
 </div>
 
-<h2>2 · Peer comparison</h2>
+<h2>2 · Balance sheet and growth</h2>
+<p class="sub">Debt = tax-exempt bonds + mortgages + notes. Liquid net assets = net assets minus net property and equipment. Cash &amp; investments = cash, savings and securities on the balance sheet (includes endowment assets).</p>
+<div class="grid g2">
+  <div class="card"><h3>Debt ÷ total assets</h3><div class="sub">Dashed grey line = peer median</div><div id="c-debt"></div></div>
+  <div class="card"><h3>Cash &amp; investments</h3><div class="sub">Months of operating expenses</div><div id="c-cash"></div></div>
+  <div class="card"><h3>Revenue vs expense growth</h3><div class="sub">Year-over-year change, Bear Creek</div><div id="c-growth"></div><div class="legend" id="l-growth"></div></div>
+  <div class="card scroll"><h3>Peer balance sheet and growth (latest year)</h3><table id="bs-table"></table></div>
+</div>
+
+<h2>3 · Peer comparison</h2>
 <p class="sub">Rank 1 = highest value among the 8 schools. Cells show each year's rank; Δ = change in rank over the last 3 years (▲ moved up).</p>
 <div class="card scroll"><table class="score" id="score"></table></div>
 <div class="grid g2" style="margin-top:16px">
@@ -58,7 +75,7 @@ input[type=range]{width:100%;accent-color:var(--bc)}
   <div class="card"><h3 id="bump-title"></h3><div class="sub">Rank by year — Bear Creek highlighted</div><div id="bump"></div></div>
 </div>
 
-<h2>3 · Endowment</h2>
+<h2>4 · Endowment</h2>
 <p class="sub">Implied draw = Schedule D endowment spending (grants + other + admin) ÷ beginning balance. Many schools spend from the endowment through board-designated transfers that don’t show on Schedule D, so treat low draw rates with care.</p>
 <div id="e-kpis" class="grid g4"></div>
 <div class="grid g2" style="margin-top:16px">
@@ -69,6 +86,8 @@ input[type=range]{width:100%;accent-color:var(--bc)}
     <div class="sl"><label for="s-ret">Investment return</label><input id="s-ret" type="range" min="0" max="12" step="0.1"><output id="o-ret"></output></div>
     <div class="sl"><label for="s-gift">Gifts / year</label><input id="s-gift" type="range" min="0" max="3000000" step="50000"><output id="o-gift"></output></div>
     <div id="proj"></div><div class="legend" id="l-proj"></div><div id="proj-out" class="note"></div>
+    <div class="sl"><label for="s-share">Budget share goal</label><input id="s-share" type="range" min="1" max="10" step="0.5"><output id="o-share"></output></div>
+    <div id="bud" class="bud"></div>
   </div>
 </div>
 <p class="note">Method: balance<sub>t+1</sub> = balance<sub>t</sub> × (1 + return − draw) + gifts. Draw is applied to the beginning balance. Sliders start at Bear Creek’s recent averages (return and gifts: last 5 years; draw: last 3 years). Multiples use total operating expenses. Overlake’s FY2025 revenue and endowment include a one-time ~$23M gift. Eastside Prep began reporting an endowment in FY2021.</p>
@@ -87,6 +106,8 @@ const $m = v => v == null ? "–" : Math.abs(v) >= 1e9 ? "$" + (v/1e9).toFixed(2
 const pct = (v, d = 1) => v == null ? "–" : (v * 100).toFixed(d) + "%";
 const xx = v => v == null ? "–" : v.toFixed(2) + "×";
 
+const cagr = (id, y, k) => { const a = RAW[id].years[y - 3], b = RAW[id].years[y]; return a && b && a[k] > 0 ? (b[k] / a[k]) ** (1 / 3) - 1 : null; };
+const yoy = (id, y, k) => { const a = RAW[id].years[y - 1], b = RAW[id].years[y]; return a && b && a[k] > 0 ? b[k] / a[k] - 1 : null; };
 // derived metrics per school-year
 const M = {};
 for (const id of ids) { M[id] = {};
@@ -97,14 +118,25 @@ for (const id of ids) { M[id] = {};
       opm: (core - r.expenses) / core, comp: r.comp / r.expenses,
       mixP: r.program / r.revenue, mixC: r.contrib / r.revenue, mixI: r.invest / r.revenue, mixO: (r.revenue - r.program - r.contrib - r.invest) / r.revenue,
       endow: e ? e.end : null, mult: e && e.end ? e.end / r.expenses : null,
-      draw: e && e.begin ? out / e.begin : null, ret: e && e.begin ? e.earnings / e.begin : null };
+      draw: e && e.begin ? out / e.begin : null, ret: e && e.begin ? e.earnings / e.begin : null,
+      debtA: r.debt != null && r.assets ? r.debt / r.assets : null, debtX: r.debt != null ? r.debt / r.expenses : null,
+      liq: r.ppe != null ? r.netassets - r.ppe : null, liqX: r.ppe != null ? (r.netassets - r.ppe) / r.expenses : null,
+      mo: r.cashinv != null ? r.cashinv / r.expenses * 12 : null,
+      rg3: cagr(id, y, "revenue"), eg3: cagr(id, y, "expenses"), rg1: yoy(id, y, "revenue"), eg1: yoy(id, y, "expenses") };
   }}
+const mo = v => v == null ? "–" : v.toFixed(1) + " mo";
 const METRICS = [
-  {k:"opm", n:"Operating margin", f:v => pct(v)},
+  {g:"Operations", k:"opm", n:"Operating margin", f:v => pct(v)},
   {k:"comp", n:"Salaries & benefits % expenses", f:v => pct(v)},
   {k:"mixP", n:"Tuition & program % revenue", f:v => pct(v, 0)},
   {k:"mixC", n:"Contributions % revenue", f:v => pct(v)},
-  {k:"endow", n:"Endowment value", f:$m},
+  {g:"Growth", k:"rg3", n:"Revenue growth (3-yr CAGR)", f:v => pct(v)},
+  {k:"eg3", n:"Expense growth (3-yr CAGR)", f:v => pct(v)},
+  {g:"Balance sheet", k:"debtA", n:"Debt ÷ total assets", f:v => pct(v, 0)},
+  {k:"debtX", n:"Debt ÷ expenses", f:xx},
+  {k:"liq", n:"Liquid net assets", f:$m},
+  {k:"mo", n:"Cash & investments (months of expenses)", f:mo},
+  {g:"Endowment", k:"endow", n:"Endowment value", f:$m},
   {k:"mult", n:"Endowment ÷ expenses", f:xx},
   {k:"draw", n:"Implied draw rate", f:v => pct(v, 2)}];
 const val = (id, y, k) => M[id][y] ? M[id][y][k] : null;
@@ -152,11 +184,22 @@ const withPeer = (k, fmt, el) => lineChart(el, [{n:"Peer median", c:"var(--peer)
 withPeer("opm", v => pct(v, 0), $("c-margin")); withPeer("comp", v => pct(v, 0), $("c-comp"));
 barChart($("c-endow"), col("endow").map(v => v == null ? null : v / 1e6), v => "$" + v.toFixed(1) + "M");
 
-// ---------- Section 2 ----------
+// ---------- Balance sheet and growth ----------
+withPeer("debtA", v => pct(v, 0), $("c-debt"));
+withPeer("mo", v => v.toFixed(0) + " mo", $("c-cash"));
+lineChart($("c-growth"), [{n:"Revenue growth", c:"var(--c1)", v:YEARS.map(y => val(ME, y, "rg1"))}, {n:"Expense growth", c:"var(--c2)", v:YEARS.map(y => val(ME, y, "eg1"))}], v => pct(v, 0));
+legend($("l-growth"), [{n:"Revenue growth", c:"var(--c1)"}, {n:"Expense growth", c:"var(--c2)"}]);
+const BS = ["debtA", "debtX", "liq", "mo", "rg3", "eg3"].map(k => METRICS.find(m => m.k === k));
+$("bs-table").innerHTML = `<tr><th>School</th>${["Debt ÷ assets", "Debt ÷ exp.", "Liquid NA", "Cash & inv.", "Rev. CAGR", "Exp. CAGR"].map(h => `<th>${h}</th>`).join("")}</tr>` +
+  ids.slice().sort((a, b) => (val(b, LAST, "mo") ?? -1) - (val(a, LAST, "mo") ?? -1)).map(i =>
+    `<tr class="${i === ME ? "me" : ""}"><td>${short[i]}</td>${BS.map(m => `<td>${m.f(val(i, LAST, m.k))}</td>`).join("")}</tr>`).join("") +
+  `<tr><td><i>Peer median</i></td>${BS.map(m => `<td><i>${m.f(peerMed(m.k, LAST))}</i></td>`).join("")}</tr>`;
+
+// ---------- Peer comparison ----------
 const heat = r => r <= 2 ? "background:var(--bc);color:#fff" : r >= 7 ? "background:var(--bc-soft);color:var(--ink)" : "";
 $("score").innerHTML = `<tr><th>Metric</th><th>Bear Creek FY${LAST}</th><th>Peer median</th><th>Rank FY${LAST}</th><th>Rank FY${LAST - 3}</th><th>Δ 3 yrs</th></tr>` +
-  METRICS.map(m => { const a = rk(m.k), b = rk(m.k, LAST - 3), d = a != null && b != null ? b - a : null;
-    return `<tr><td>${m.n}</td><td>${m.f(cur[m.k])}</td><td>${m.f(peerMed(m.k, LAST))}</td><td><span class="rk" style="${a ? heat(a) : ""}">${a ?? "–"}</span> of ${nn(m.k)}</td><td>${b ?? "–"}</td><td class="${d > 0 ? "up" : d < 0 ? "down" : ""}">${d == null ? "–" : d > 0 ? "▲ " + d : d < 0 ? "▼ " + -d : "="}</td></tr>`; }).join("");
+  METRICS.map(m => { const gh = m.g ? `<tr class="grp"><td colspan="6">${m.g}</td></tr>` : ""; const a = rk(m.k), b = rk(m.k, LAST - 3), d = a != null && b != null ? b - a : null;
+    return gh + `<tr><td>${m.n}</td><td>${m.f(cur[m.k])}</td><td>${m.f(peerMed(m.k, LAST))}</td><td><span class="rk" style="${a ? heat(a) : ""}">${a ?? "–"}</span> of ${nn(m.k)}</td><td>${b ?? "–"}</td><td class="${d > 0 ? "up" : d < 0 ? "down" : ""}">${d == null ? "–" : d > 0 ? "▲ " + d : d < 0 ? "▼ " + -d : "="}</td></tr>`; }).join("");
 let metric = METRICS[0];
 function renderRank() {
   $("mtabs").innerHTML = METRICS.map(m => `<button aria-pressed="${m === metric}" data-k="${m.k}">${m.n}</button>`).join("");
@@ -176,7 +219,7 @@ function renderRank() {
   $("bump").innerHTML = `<svg viewBox="0 0 ${W + 70} ${H + 20}" role="img" style="margin-right:-60px">${s}</svg>`; }
 renderRank();
 
-// ---------- Section 3 ----------
+// ---------- Endowment ----------
 const last3 = YEARS.slice(-3), last5 = YEARS.slice(-5);
 const bcAvg = (k, ys) => avg(ys.map(y => val(ME, y, k)).filter(v => v != null));
 const drawAvg = id => { const o = last3.map(y => M[id][y] && M[id][y].endow ? RAW[id].years[y].endow : null).filter(Boolean); const b = sum(o.map(e => e.begin)); return b ? sum(o.map(e => e.grants + e.other + e.admin)) / b : null; };
@@ -191,8 +234,9 @@ $("e-table").innerHTML = `<tr><th>School</th><th>Endowment</th><th>÷ Expenses</
     `<tr class="${i === ME ? "me" : ""}"><td>${short[i]}</td><td>${$m(val(i, LAST, "endow"))}</td><td>${xx(val(i, LAST, "mult"))}</td><td>${pct(drawAvg(i), 1)}</td><td>${pct(retAvg(i, last5), 1)}</td></tr>`).join("");
 
 const S = {draw: +(drawAvg(ME) * 100).toFixed(1), ret: +(retAvg(ME, last5) * 100).toFixed(1), gift: Math.round(avg(last5.map(y => RAW[ME].years[y].endow.gifts)) / 5e4) * 5e4};
+S.share = 5;
 const D0 = {...S};
-const sl = {draw: $("s-draw"), ret: $("s-ret"), gift: $("s-gift")};
+const sl = {draw: $("s-draw"), ret: $("s-ret"), gift: $("s-gift"), share: $("s-share")};
 function project() {
   let b = cur.endow, path = [b], drawn = 0; for (let t = 1; t <= 10; t++) { const d = b * S.draw / 100; drawn += d; b = b * (1 + S.ret / 100) - d + S.gift; path.push(b); }
   const base = [cur.endow]; let bb = cur.endow; for (let t = 1; t <= 10; t++) { bb = bb * (1 + D0.ret / 100 - D0.draw / 100) + D0.gift; base.push(bb); }
@@ -205,12 +249,34 @@ function project() {
   legend($("l-proj"), [{n:"Your scenario", c:"var(--bc)"}, {n:"Baseline (recent averages)", c:"var(--peer)", dash:1}]);
   const opx = cur.expenses * 1.03 ** 10;
   $("proj-out").innerHTML = `<b>Year 10: ${$m(path[10])}</b> (${(path[10] / cur.endow).toFixed(1)}× today) · about ${xx(path[10] / opx)} operating expenses if expenses grow 3%/yr · cumulative draw ${$m(drawn)}.`;
+  const share = S.share / 100, rows = [S.draw].concat(Math.abs(S.draw - 4) < .05 ? [] : [4]);
+  $("bud").innerHTML = `<div><b>What a draw funds</b> (as % of FY${LAST} expenses, goal: ${S.share.toFixed(1)}% of budget)</div>` + rows.map(d => {
+    const d1 = cur.endow * d / 100, need = d > 0 ? share * cur.expenses / (d / 100) : null;
+    return `<div>At a <b>${d.toFixed(1)}%</b> draw${d === S.draw ? " (your slider)" : " (reference)"}: year 1 ${$m(d1)} = ${pct(d1 / cur.expenses, 1)} of expenses; year 10 ${$m(path[9] * d / 100)}. ` +
+      (need == null ? "Set a draw above 0% to size the endowment goal." : `Reaching the goal needs <b>${$m(need)}</b> (${need > cur.endow ? $m(need - cur.endow) + " more than today" : "already met"}).`) + `</div>`; }).join("");
+  $("o-share").textContent = S.share.toFixed(1) + "%";
   $("o-draw").textContent = S.draw.toFixed(1) + "%"; $("o-ret").textContent = S.ret.toFixed(1) + "%"; $("o-gift").textContent = $m(S.gift); }
 for (const k in sl) { sl[k].value = S[k]; sl[k].oninput = () => { S[k] = +sl[k].value; project(); }; }
 const presets = [["Recent average", D0.draw], ["4% policy", 4], ["5% policy", 5]];
 $("presets").innerHTML = presets.map((p, i) => `<button data-i="${i}" aria-pressed="false">${p[0]} · ${p[1].toFixed(1)}% draw</button>`).join("");
 $("presets").querySelectorAll("button").forEach(b => b.onclick = () => { S.draw = presets[b.dataset.i][1]; sl.draw.value = S.draw; project(); });
 project();
+
+// ---------- Summary ----------
+(function () {
+  const cmp = (k, hi) => { const v = cur[k], m = peerMed(k, LAST); return v == null || m == null ? null : (v - m) * (hi ? 1 : -1); };
+  const items = [];
+  const add = (tone, text) => items.push(`<li><span class="chip ${tone}">${tone === "good" ? "Strength" : tone === "watch" ? "Watch" : "Context"}</span><span>${text}</span></li>`);
+  const r = k => rk(k) ? `${rk(k)} of ${nn(k)}` : "unranked";
+  add(cmp("opm", 1) >= 0 ? "good" : "watch", `Operating margin is <b>${pct(cur.opm)}</b> (rank ${r("opm")}; peer median ${pct(peerMed("opm", LAST))}). It was ${pct(prev.opm)} in FY${LAST - 3}.`);
+  const rg = cur.rg3, eg = cur.eg3;
+  add(rg >= eg ? "good" : "watch", `Over three years revenue grew <b>${pct(rg)}</b> a year and expenses <b>${pct(eg)}</b> a year. ${rg >= eg ? "Revenue is growing faster than costs." : "Costs are growing faster than revenue."}`);
+  add(cmp("comp", 0) >= 0 ? "good" : "watch", `Salaries and benefits take <b>${pct(cur.comp)}</b> of expenses (rank ${r("comp")}; peer median ${pct(peerMed("comp", LAST))}).`);
+  add(rk("mo") <= 3 ? "good" : rk("mo") >= 6 ? "watch" : "info", `Cash and investments cover <b>${cur.mo.toFixed(1)} months</b> of expenses (rank ${r("mo")}), while the reported endowment is only <b>${xx(cur.mult)}</b> of expenses (rank ${r("mult")}).`);
+  add(cmp("debtA", 0) >= 0 ? "good" : "watch", `Debt is <b>${pct(cur.debtA, 0)}</b> of total assets (rank ${r("debtA")}; peer median ${pct(peerMed("debtA", LAST), 0)}).`);
+  add("info", `Contributions are <b>${pct(cur.mixC, 0)}</b> of revenue and tuition and program revenue is <b>${pct(cur.mixP, 0)}</b>.`);
+  $("summary").innerHTML = items.join("");
+})();
 </script>
 </body>
 </html>
